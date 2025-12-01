@@ -17,6 +17,6 @@ int main() {
 
 void loopprint_hello(int n){
      for(int i = 0; i < n; i++) {
-        printf(" %d hello world\n",i+1);
+        printf(" [%d] hello world\n",i+1);
     }
 }
