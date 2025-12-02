@@ -1,41 +1,46 @@
 #include <stdio.h>
 
-int main() 
+void updateSums(int currentNumber, int *evenTotal, int *oddTotal) 
 {
-    int number;      // เก็บ เต็ม
-    int evenSum = 0; // เก็บ คู่
-    int oddSum = 0;  // เก็บ คี่
 
-
-
-    if (scanf("%d", &number) != 1) // ถ้าได้รับค่าที่ไม่ใช่ตัวเลข จะ จบการทำงานทันที
-    {
-        return 1;
+    if (currentNumber == 0) {
+        return; 
     }
 
-    while (number != 0)  // ถ้าเลขไม่เท่ากับ 0 ให้ทำงาน ต่อไปเรื่อยๆ
+    if (currentNumber % 2 == 0) 
     {
-        
-        if (number % 2 == 0)  // ถ้าเลขเป็นเลขคู่ให้เอาไป + เลขกับตัวแปร evensum 
-        {
-            evenSum += number; 
-        } 
+        *evenTotal += currentNumber; 
+    } 
 
-        else 
+    else 
+    {
+        *oddTotal += currentNumber; 
+    }
+}
 
-        {
-            oddSum += number; // ถ้าเลขเป็นเลขคี่ให้เอาไป + เลขกับตัวแปร oddsum
-        }
+int main() 
+{
+    int inputValue;       // ตัวเลขที่ป้อน
+    int totalEvenSum = 0; // เลขคู่
+    int totalOddSum = 0;  // เลขคี่
 
-        if (scanf("%d", &number) != 1) // ถ้ารับค่าที่ไม่ใช่ตัวเลขหรือ 0 จะจบ loop
+    if (scanf("%d", &inputValue) != 1) 
+    {
+        return 1; 
+    }
+
+    while (inputValue != 0) 
+    {
+        updateSums(inputValue, &totalEvenSum, &totalOddSum);
+
+        if (scanf("%d", &inputValue) != 1) 
         {
             break; 
         }
-
     }
 
-    printf("\nEven Sum: %d\n", evenSum);
-    printf("Odd Sum: %d\n", oddSum);
+    printf("\nEven Sum: %d\n", totalEvenSum);
+    printf("Odd Sum: %d\n", totalOddSum);
 
     return 0;
 }
