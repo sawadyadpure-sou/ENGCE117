@@ -1,26 +1,42 @@
 #include <stdio.h>
 
-int main() 
-
+int calculateSum(int N) 
 {
+    int sum = 0; 
+    int i;       
 
-    int x; //รับจากผู้ใช้
-    int result = 0; // คำตอบ
-    int i; // ไว้นับจำนวนครั้ง
-    
-    if (scanf("%d", &x) >= 1) 
 
+    if (N < 1) 
     {
-
-        for (i = 1; i <= x; i++)
-
-        {
-            result = result + i;
-        }
+        return 0; 
     }
 
-    printf("%d\n", result);
+
+    for (i = 1; i <= N; i++) 
+    {
+        sum = sum + i; 
+    }
+
+    return sum; 
+}
+
+
+int main() 
+{
+    int N;       
+    int result;  
+
+
+
+
+    if (scanf("%d", &N) != 1) 
+    {
+        return 1; 
+    }
+
+    result = calculateSum(N);
+
+    printf("%d", result);
 
     return 0;
-
 }
