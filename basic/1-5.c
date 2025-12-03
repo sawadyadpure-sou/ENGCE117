@@ -1,47 +1,34 @@
 #include <stdio.h>
 
-void updateSums(int currentNumber, int *evenTotal, int *oddTotal); 
+void update_sums(int current_number, int *even_total, int *odd_total); 
 
 int main() 
 {
-    int inputValue;       // ตัวเลขที่ป้อน
-    int totalEvenSum = 0; // เลขคู่
-    int totalOddSum = 0;  // เลขคี่
+    int number;
+    int even_sum = 0;
+    int odd_sum = 0;
 
-    if (scanf("%d", &inputValue) != 1) 
+    printf("Enter integers (0 to stop):\n");
+
+    while (scanf("%d", &number) == 1 && number != 0) 
     {
-        return 1; 
+        update_sums(number, &even_sum, &odd_sum);
     }
-
-    while (inputValue != 0) 
-    {
-        updateSums(inputValue, &totalEvenSum, &totalOddSum);
-
-        if (scanf("%d", &inputValue) != 1) 
-        {
-            break; 
-        }
-    }
-
-    printf("\nEven Sum: %d\n", totalEvenSum);
-    printf("Odd Sum: %d\n", totalOddSum);
-
+    
+    printf("\nEven Sum: %d\n", even_sum);
+    printf("Odd Sum: %d\n", odd_sum);
+    
     return 0;
 }
-void updateSums(int currentNumber, int *evenTotal, int *oddTotal) 
+
+void update_sums(int current_number, int *even_total, int *odd_total) 
 {
-
-    if (currentNumber == 0) {
-        return; 
-    }
-
-    if (currentNumber % 2 == 0) 
+    if (current_number % 2 == 0) 
     {
-        *evenTotal += currentNumber; 
+        *even_total += current_number;
     } 
-
     else 
     {
-        *oddTotal += currentNumber; 
+        *odd_total += current_number;
     }
 }
