@@ -1,21 +1,22 @@
 #include <stdio.h>
 
 int main() {
-    int dayCode, hour;
+    int วัน, ชั่วโมง;
 
-    // อ่านค่า dayCode และ hour
-    if (scanf("%d %d", &dayCode, &hour) != 2) {
+    // อ่านค่า วัน และ ชั่วโมง
+    if (scanf("%d %d", &วัน, &ชั่วโมง) != 2) {
         return 1;
     }
-    //ตรวจสอบ dayCode
-    switch (dayCode) {
+
+    // ใช้ switch ในการตรวจสอบ วัน
+    switch (วัน) {
         case 1: // วันจันทร์
         case 2: // วันอังคาร
         case 3: // วันพุธ
         case 4: // วันพฤหัสบดี
         case 5: // วันศุกร์ (1-5 เป็นวันทำการ)
-            // ตรวจสอบ hour โดยใช้ if-else ภายใน case
-            if (hour >= 8 && hour <= 17) {
+            // ตรวจสอบ ชั่วโมง โดยใช้ if-else ภายใน case
+            if (ชั่วโมง >= 8 && ชั่วโมง <= 17) {
                 printf("System Running (Workday)\n");
             } else {
                 printf("System Idle (Off-hours)\n");
@@ -29,7 +30,7 @@ int main() {
             break;
 
         default:
-            // ถ้า dayCode ไม่อยู่ในช่วง 1-7
+            // ถ้า วัน ไม่อยู่ในช่วง 1-7
             printf("Invalid Day Code\n");
             break;
     }
