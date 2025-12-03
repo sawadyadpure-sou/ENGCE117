@@ -1,43 +1,42 @@
 #include <stdio.h>
 
-int main() 
-{
-    int customerType;
-    float consumption_kwh;
-    float totalBill = 0.0;
+float calculate_bill(int type, float consumption);
 
-    if (scanf("%d %f", &customerType, &consumption_kwh) != 2) 
-    {
-        return 1; // เกิดข้อผิดพลาดในการอ่านข้อมูล
+int main() {
+    int customer_type;
+    float kwh_consumed;
+    float total_bill = 0.0;
+
+    if (scanf("%d %f", &customer_type, &kwh_consumed) != 2) {
+        return 1;
     }
 
-    if (customerType == 1) 
-    {
-        if (consumption_kwh >= 0 && consumption_kwh <= 100) 
-        {
-            totalBill = consumption_kwh * 3.0;
-        } else if (consumption_kwh > 100) 
-        {
-            totalBill = consumption_kwh * 4.0;
-        }
-    } else if (customerType == 2) 
-    {
-        if (consumption_kwh >= 0 && consumption_kwh <= 500) 
-        {
-            totalBill = consumption_kwh * 5.0;
-        } else if (consumption_kwh > 500) 
-        {
-            totalBill = consumption_kwh * 6.5;
-        }
-    } else
-    {
+    if (customer_type == 1 || customer_type == 2) {
+        total_bill = calculate_bill(customer_type, kwh_consumed);
+        printf("%.2f\n", total_bill);
+    } else {
         printf("Invalid Customer Type\n");
     }
 
-    if (customerType == 1 || customerType == 2) 
-    {
-        printf("%.2f\n", totalBill);
-    }
-
     return 0;
+}
+
+float calculate_bill(int type, float consumption) {
+    float bill = 0.0;
+
+    if (type == 1) {
+        if (consumption >= 0 && consumption <= 100) {
+            bill = consumption * 3.0;
+        } else if (consumption > 100) {
+            bill = consumption * 4.0;
+        }
+    } else if (type == 2) {
+        if (consumption >= 0 && consumption <= 500) {
+            bill = consumption * 5.0;
+        } else if (consumption > 500) {
+            bill = consumption * 6.5;
+        }
+    }
+    
+    return bill;
 }
