@@ -1,25 +1,6 @@
 #include <stdio.h>
 
-int calculateSum(int N) 
-{
-    int sum = 0; 
-    int i;       
-
-
-    if (N < 1) 
-    {
-        return 0; 
-    }
-
-
-    for (i = 1; i <= N; i++) 
-    {
-        sum = sum + i; 
-    }
-
-    return sum; 
-}
-
+int calculateSum(int N);
 
 int main() 
 {
@@ -39,4 +20,23 @@ int main()
     printf("%d", result);
 
     return 0;
+}
+int calculateSum(int N)
+{
+    int sum = 0; 
+    int i;       
+
+
+    if (N < 1) 
+    {
+        return 0; 
+    }
+
+
+    for (i = 1; i <= N; i++) 
+    {
+        sum = sum + i; 
+    }
+
+    return sum; 
 }

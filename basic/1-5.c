@@ -1,22 +1,6 @@
 #include <stdio.h>
 
-void updateSums(int currentNumber, int *evenTotal, int *oddTotal) 
-{
-
-    if (currentNumber == 0) {
-        return; 
-    }
-
-    if (currentNumber % 2 == 0) 
-    {
-        *evenTotal += currentNumber; 
-    } 
-
-    else 
-    {
-        *oddTotal += currentNumber; 
-    }
-}
+void updateSums(int currentNumber, int *evenTotal, int *oddTotal); 
 
 int main() 
 {
@@ -43,4 +27,21 @@ int main()
     printf("Odd Sum: %d\n", totalOddSum);
 
     return 0;
+}
+void updateSums(int currentNumber, int *evenTotal, int *oddTotal) 
+{
+
+    if (currentNumber == 0) {
+        return; 
+    }
+
+    if (currentNumber % 2 == 0) 
+    {
+        *evenTotal += currentNumber; 
+    } 
+
+    else 
+    {
+        *oddTotal += currentNumber; 
+    }
 }
