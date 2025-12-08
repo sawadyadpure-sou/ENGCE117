@@ -1,39 +1,45 @@
 #include <stdio.h>
 
-int main() {
-    int วัน, ชั่วโมง;
-
-    // อ่านค่า วัน และ ชั่วโมง
-    if (scanf("%d %d", &วัน, &ชั่วโมง) != 2) {
-        return 1;
-    }
-
-    // ใช้ switch ในการตรวจสอบ วัน
-    switch (วัน) {
-        case 1: // วันจันทร์
-        case 2: // วันอังคาร
-        case 3: // วันพุธ
-        case 4: // วันพฤหัสบดี
-        case 5: // วันศุกร์ (1-5 เป็นวันทำการ)
-            // ตรวจสอบ ชั่วโมง โดยใช้ if-else ภายใน case
-            if (ชั่วโมง >= 8 && ชั่วโมง <= 17) {
-                printf("System Running (Workday)\n");
-            } else {
-                printf("System Idle (Off-hours)\n");
+void check_system_status(int day_of_week_code, int current_hour) {
+    switch (day_of_week_code) {
+        case 2:
+        case 3:
+        case 4:
+        case 5:
+        case 6:
+            if (current_hour >= 8 && current_hour < 17) {
+                printf("System Running (Workday)\n") ;
+            } 
+            else if (current_hour >= 0 && current_hour <= 23) {
+                printf("System Idle (Off-hours)\n") ;
+            } 
+            else {
+                printf("Invalid Hour Range\n") ;
             }
             break;
 
-        case 6: // วันเสาร์
-        case 7: // วันอาทิตย์ (6-7 เป็นวันหยุดสุดสัปดาห์)
-            // แสดงผลลัพธ์เดียวเสมอสำหรับวันหยุด
-            printf("Weekend Relax Mode\n");
-            break;
+        case 7:
+        case 1: 
+            printf("Weekend Relax Mode\n") ;
+            break ;
 
         default:
-            // ถ้า วัน ไม่อยู่ในช่วง 1-7
-            printf("Invalid Day Code\n");
-            break;
+            printf("Invalid Day Code\n") ;
+            break ;
+    }
+}
+
+int main() {
+    int day_of_week_code;
+    int current_hour;
+
+    if (scanf("%d %d", &day_of_week_code, &current_hour) != 2) 
+    {
+        printf("Error: Invalid input format.\n") ;
+        return 1;
     }
 
-    return 0;
+    check_system_status(day_of_week_code, current_hour) ;
+
+    return 0 ;
 }
