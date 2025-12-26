@@ -1,23 +1,27 @@
 #include <stdio.h>
 
-void calculate_sum_product(int num1, int num2, int *sum_ptr, int *prod_ptr) {
-    *sum_ptr = num1 + num2;    
-    *prod_ptr = num1 * num2;   
-}
-
 int main() {
+    char sentence[100] ;      
+    char *char_ptr ;          
+    int vowel_count = 0 ;     
 
-    int val_A, val_B;
-    int result_sum, result_product;
+    fgets(sentence, sizeof(sentence), stdin) ; 
 
-    scanf("%d", &val_A);
-    scanf("%d", &val_B);
+    char_ptr = sentence ; 
 
-    calculate_sum_product(val_A, val_B, &result_sum, &result_product);
+    while (*char_ptr != '\0') {
+        if (*char_ptr == 'a' || *char_ptr == 'e' || *char_ptr == 'i' || *char_ptr == 'o' || *char_ptr == 'u' ||
+            *char_ptr == 'A' || *char_ptr == 'E' || *char_ptr == 'I' || *char_ptr == 'O' || *char_ptr == 'U') {
+            vowel_count++ ; 
+        }
+        
+        char_ptr++ ; 
+    }
 
-    printf("Input numbers: %d, %d\n", val_A, val_B);
-    printf("Calculated Sum: %d\n", result_sum);
-    printf("Calculated Product: %d\n", result_product);
+    printf("\n--- Vowel Count Report ---\n") ;
+    printf("Your input: %s", sentence) ;
+    printf("Total number of vowels: %d\n", vowel_count) ;
+    printf("--------------------------\n") ;
 
-    return 0;
+    return 0 ;
 }
