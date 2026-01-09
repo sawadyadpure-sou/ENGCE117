@@ -6,9 +6,7 @@ void GetMatrix(int **value, int *row, int *col);
 int main() {
     int *data;
     int x, y;
-
     GetMatrix(&data, &x, &y);
-
 }
 
 void GetMatrix(int **value, int *row, int *col) {
